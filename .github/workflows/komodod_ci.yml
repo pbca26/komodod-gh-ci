@@ -72,7 +72,9 @@ jobs:
           brew update
           brew upgrade
           brew tap discoteq/discoteq; brew install flock
-          brew install autoconf autogen automake
+          brew install autoconf
+          brew install autogen
+          brew install automake
           brew install gcc@8
           brew install binutils
           brew install protobuf
