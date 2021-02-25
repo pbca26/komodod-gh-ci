@@ -52,7 +52,7 @@ jobs:
         run: |
           git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout assets-cc-v2
+          git checkout test-eval-nft
           ./zcutil/build.sh -j$(nproc)
           zip --junk-paths komodo-linux src/komodod src/komodo-cli
       - name: Upload komodo-linux.zip as artifact
@@ -85,7 +85,7 @@ jobs:
         run: |
           git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout assets-cc-v2
+          git checkout test-eval-nft
           ./zcutil/build-mac.sh -j4
           zip --junk-paths komodo-osx src/komodod src/komodo-cli
       - name: Upload komodo-osx.zip as artifact
@@ -119,7 +119,7 @@ jobs:
         run: |
           git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout assets-cc-v2
+          git checkout test-eval-nft
           ./zcutil/build-win.sh -j$(nproc)
           zip --junk-paths komodo-win src/komodod.exe src/komodo-cli.exe
       - name: Upload komodo-win.zip as artifact
