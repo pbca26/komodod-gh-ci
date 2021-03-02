@@ -10,6 +10,8 @@ on:
     - beta
     - dev
     - research
+    - websockets
+    - tokens
 
 
 jobs:
