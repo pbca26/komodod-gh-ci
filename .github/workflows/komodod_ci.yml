@@ -58,7 +58,7 @@ jobs:
           zip --junk-paths komodo-linux src/komodod src/komodo-cli
       - name: Upload komodo-linux.zip as artifact
         uses: actions/upload-artifact@v1
-        with:
+
           name: komodo-linux
           path: ./komodo/komodo-linux.zip
 
@@ -70,11 +70,12 @@ jobs:
       - name: Install deps (macOS)
         continue-on-error: true
         run: |
+          /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
           brew update
           brew upgrade
           brew tap discoteq/discoteq; brew install flock
           brew install autoconf autogen automake
-          brew install gcc@8
+          brew update && brew install gcc@8
           brew install binutils
           brew install protobuf
           brew install coreutils
