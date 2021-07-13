@@ -136,10 +136,10 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: komodo-linux  
-        #- name: Download komodo-osx.zip
-        #  uses: actions/download-artifact@v1
-        #  with:
-        #    name: komodo-osx
+        - name: Download komodo-osx.zip
+          uses: actions/download-artifact@v1
+          with:
+            name: komodo-osx
         - name: Download komodo-win.zip
           uses: actions/download-artifact@v1
           with:
