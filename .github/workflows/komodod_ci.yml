@@ -53,8 +53,8 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           git clone https://github.com/dimxy/komodo
-          git checkout tkltest-new-cc-sig
           cd komodo
+          git checkout tkltest-new-cc-sig
           ./zcutil/build.sh -j$(nproc)
           zip --junk-paths komodo-linux src/komodod src/komodo-cli
       - name: Upload komodo-linux.zip as artifact
@@ -84,8 +84,8 @@ jobs:
       - name: Build (macOS)
         run: |
           git clone https://github.com/dimxy/komodo
-          git checkout tkltest-new-cc-sig
           cd komodo
+          git checkout tkltest-new-cc-sig
           ./zcutil/build-mac.sh -j4
           zip --junk-paths komodo-osx src/komodod src/komodo-cli
       - name: Upload komodo-osx.zip as artifact
@@ -118,8 +118,8 @@ jobs:
       - name: Build (Windows)
         run: |
           git clone https://github.com/dimxy/komodo
-          git checkout tkltest-new-cc-sig
           cd komodo
+          git checkout tkltest-new-cc-sig
           ./zcutil/build-win.sh -j$(nproc)
           zip --junk-paths komodo-win src/komodod.exe src/komodo-cli.exe
       - name: Upload komodo-win.zip as artifact
