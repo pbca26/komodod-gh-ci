@@ -49,9 +49,9 @@ jobs:
       - name: Build (Linux)
         if: runner.os == 'Linux'
         run: |
-          git clone https://github.com/tokelPlatform/komodo
+          git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout tkltest
+          git checkout tkltest-websockets-raddress
           ./zcutil/build.sh -j$(nproc)
           zip --junk-paths komodo-linux src/komodod src/komodo-cli
       - name: Upload komodo-linux.zip as artifact
@@ -80,9 +80,9 @@ jobs:
           brew install python3
       - name: Build (macOS)
         run: |
-          git clone https://github.com/tokelPlatform/komodo
+          git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout tkltest
+          git checkout tkltest-websockets-raddress
           ./zcutil/build-mac.sh -j4
           zip --junk-paths komodo-osx src/komodod src/komodo-cli
       - name: Upload komodo-osx.zip as artifact
@@ -112,9 +112,9 @@ jobs:
           sudo update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix
       - name: Build (Windows)
         run: |
-          git clone https://github.com/tokelPlatform/komodo
+          git clone https://github.com/dimxy/komodo
           cd komodo
-          git checkout tkltest
+          git checkout tkltest-websockets-raddress
           ./zcutil/build-win.sh -j$(nproc)
           zip --junk-paths komodo-win src/komodod.exe src/komodo-cli.exe
       - name: Upload komodo-win.zip as artifact
@@ -126,8 +126,8 @@ jobs:
   publish-release:
       name: Publishing CD releases
       runs-on: ubuntu-latest
-      #needs: [linux-build, windows-build, osx-build]
-      needs: [linux-build, osx-build]
+      needs: [linux-build, windows-build, osx-build]
+      #needs: [linux-build, osx-build]
       steps:
         - name: Download komodo-linux.zip
           uses: actions/download-artifact@v1
@@ -137,10 +137,10 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: komodo-osx
-        #- name: Download komodo-win.zip
-        #  uses: actions/download-artifact@v1
-        #  with:
-        #    name: komodo-win
+        - name: Download komodo-win.zip
+          uses: actions/download-artifact@v1
+          with:
+            name: komodo-win
 
         - name: Extract branch name
           shell: bash
